@@ -2,15 +2,17 @@ import java.net.URL
 import de.l3s.boilerpipe.extractors.ArticleExtractor
 
 import org.http4s.HttpService
-import org.http4s.dsl.{GET, Root, Ok, ->, /, OkSyntax}
+import org.http4s.dsl.{GET, Root, Ok, OkSyntax, QueryParamDecoderMatcher, ->, /, :?}
 import org.http4s.server.{Server, ServerApp}
 import scalaz.concurrent.Task
 import org.http4s.server.blaze.BlazeBuilder
 
+object URLQueryParamMatcher extends QueryParamDecoderMatcher[String]("url")
+
 
 object Main extends ServerApp {
   val extractURLContentService = HttpService {
-    case GET -> Root / "extract" / url => {
+    case GET -> Root / "extract" :? URLQueryParamMatcher(url) => {
       val text = ArticleExtractor.INSTANCE.getText(new URL(url))
       Ok(text)
     }
