@@ -6,7 +6,7 @@ lazy val http4sVersion = "0.14.11"
 
 name := "html-extractor"
 
-version := "0.1.1"
+version := "0.2"
 
 assemblyOutputPath in assembly := file("jars/html-extractor.jar")
 
