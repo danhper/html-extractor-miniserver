@@ -16,7 +16,7 @@ java -jar html-extractor.jar
 ## Sample usage
 
 ```
-curl localhost:8080/extract/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FParsing
+curl localhost:8080/extract?url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FParsing
 ```
 
 ## Building
